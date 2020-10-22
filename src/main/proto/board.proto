@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package com.example.demo.grpc.board;
+option java_multiple_files = true;
+
+message BoardDto {
+    int64 id = 1;
+    int64 user_id = 2;
+    string title = 3;
+    string image_url = 4;
+    int32 likes = 5;
+    int32 group_id = 6;
+    int32 group_seq = 7;
+    int32 group_depth = 8;
+    string created_time = 9;
+    string updated_time = 10;
+}
+
+message BoardId {
+    int64 id = 1;
+}
+
+message BoardStatus {
+    int32 StatusCode = 1;
+    string msg = 2;
+}
+
+message BoardRequest {
+	BoardDto req = 1;
+}
+
+message BoardResponse {
+    BoardDto res = 1;
+}
+
+service BoardService {
+    rpc boardInsert(BoardRequest) returns (BoardResponse) {};
+    rpc boardUpdate(BoardRequest) returns (BoardResponse) {};
+    rpc boardRead(BoardId) returns (BoardStatus) {};
+    rpc boardDelete(BoardId) returns (BoardStatus) {};
+}

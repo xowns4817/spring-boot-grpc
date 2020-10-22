@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.BoardDao">
+
+    <!-- 전체 게시물 조회 -->
+    <select id= "ReadBoard" resultType="com.example.demo.dto.BoardObj">
+        SELECT * FROM Board;
+    </select>
+
+    <!-- 게시물 삽입 -->
+    <insert id= "InsertBoard" parameterType="com.example.demo.dto.BoardObj">
+        INSERT INTO Board (user_id, title, img_url, likes, group_id, group_seq, group_depth, created_time, updated_time) values (#{userId}, #{title}, #{imgUrl}, #{likes}, #{group_id}, #{group_seq}, #{group_depth}, #{created_time}, #{updated_time})       )
+    </insert>
+
+</mapper>
